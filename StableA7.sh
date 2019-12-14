@@ -51,7 +51,7 @@ echo "==> Checking for libirecovery..."
 	echo "==> Making libirecovery..."
 	cd libirecovery
         git submodule init && git submodule update
-	./autogen.sh && make
+	./autogen.sh --prefix=/usr && make
 
 	echo
 	echo "==> Installing libirecovery. This might ask for your password..."
