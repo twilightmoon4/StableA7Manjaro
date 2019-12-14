@@ -35,3 +35,5 @@ sudo bash StableA7.sh
 Okay, after a long time before the exploit works, and congratulations ! your idevice will be on iOS 10.3.3 <3
 
 Thanks to: @LinusHenze @mosk_i @tihmstar @a_i_da_n @ConsoleLogLuke <3
+
+It should compile well, but if there are any compilation errors, look for pamac with AUR turned on and install libirecovery-git which the script will compile normally.
