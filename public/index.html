@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>StableA7</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+		<script src="modal.js"></script>
+	</head>
+	<body>
+		<section class="section" align="center">
+			<div class="container">
+				<h1 class="title">StableA7</h1>
+				<p class="subtitle">Downgrade any A7 device to iOS 10.3.3</p>
+				<br>
+				<button class="button is-rounded is-primary modal-button" data-target="mac">
+					<span class="icon">
+						<i class="fab fa-apple"></i>
+					</span>
+					<span>Download (macOS)</span>
+				</button>
+				&nbsp;
+				<button class="button is-rounded is-primary modal-button" data-target="linux" disabled>
+					<span class="icon">
+						<i class="fab fa-linux"></i>
+					</span>
+					<span>Download (Linux)</span>
+				</button>
+				&nbsp;
+				<button class="button is-rounded is-primary modal-button" data-target="windows" disabled>
+          <span class="icon">
+            <i class="fab fa-windows"></i>
+          </span>
+          <span>Download (Windows)</span>
+        </button>
+				<br><br>
+				<a href="https://gitlab.com/devluke/stablea7" target="_blank">
+					<button class="button is-rounded is-link">
+						<span class="icon">
+							<i class="fab fa-gitlab"></i>
+						</span>
+						<span>Source</span>
+					</button>
+				</a>
+				&nbsp;
+				<a href="https://twitter.com/ConsoleLogLuke" target="_blank">
+          <button class="button is-rounded is-link">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+            <span>Support</span>
+          </button>
+        </a>
+				&nbsp;
+				<a href="https://forms.gle/qcYgpNjCouehFksc7" target="_blank">
+          <button class="button is-rounded is-link">
+            <span class="icon">
+              <i class="fas fa-comment"></i>
+            </span>
+            <span>Feedback</span>
+          </button>
+        </a>
+			</div>
+		</section>
+		<div class="modal" id="mac">
+			<div class="modal-background"></div>
+			<div class="modal-content box">
+				<p>To download and run StableA7 on macOS, simply open a Terminal window and run this command:</p>
+				<br>
+				<code>bash <(curl -s https://gitlab.com/snippets/1907816/raw)</code>
+			</div>
+			<button class="modal-close is-large"></button>
+	</body>
+</html>
