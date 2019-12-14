@@ -6,7 +6,7 @@ Is downgrade for iOS10.3.3 in A7 idevices
 
 What do you need to install?
 
-A Ubuntu / Debian based Linux distro more recent (I recommend Xubuntu 19.10 which I use) , installed, no Live CD
+A Manjaro/Arch Linux based Linux distro more recent, installed, no Live CD
 
 Patience (very important)
 
@@ -14,15 +14,13 @@ A brain (very rare)
 
 Your idevice in DFU mode
 
-*Open Software&Updates (or Software Sources depending on your Linux distro or even Additional Drivers) and enable all sources on the Other Software tab
-
 => just run:
 
-git clone https://github.com/twilightmoon4/StableA7Linux.git
+git clone https://github.com/twilightmoon4/StableA7Manjaro.git
 
-cd StableA7Linux
+cd StableA7Manjaro
 
-sudo apt-get update
+sudo pacman -Syu
 
 chmod +x *
 
