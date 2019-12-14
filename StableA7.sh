@@ -22,76 +22,110 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 
 cd bin
 chmod +x *
-cd .. 			 
- mkdir build
-  cd build
-sudo ldconfig
-                          
-                for i in "libplist" "libusbmuxd" "usbmuxd" "libirecovery" "ideviceinstaller" "libideviceactivation" "ifuse"
+cd .. 	
+mkdir build
+cd build		 
+   
+                 
+                for i in "libusbmuxd" "usbmuxd" "libirecovery" \
+                "ideviceinstaller" "libideviceactivation" "ifuse"
                 do
                         echo -e "Fetching $i..."
                         git clone https://github.com/libimobiledevice/${i}.git
-                        cd ${i}
-                          echo -e "Installing $i..."
-                        git submodule init
-                        git submodule update
+                        cd $i
+                        echo -e "Configuring $i..."
                         ./autogen.sh
-                        make
-                        sudo make install
-                        
-                      
+                        ./configure
+                        echo -e "Building $i..."
+                        make && sudo make install
+                        echo -e "Installing $i..."
                         cd ..
-                       
                   
                 done 
 
- for i in  "libimobiledevice" "idevicerestore"
-                do
-                        echo -e "Fetching $i..."
-                        git clone https://github.com/s0uthwest/${i}.git
-                        cd ${i}
-                          echo -e "Installing $i..."
-git submodule init
-                        git submodule update
-                        ./autogen.sh
-                        make
-                        sudo make install
-                        
-                      
-                        cd ..
-                       
-                  
-                done
-               for i in  "libfragmentzip" "libgeneral" "img4tool" "tsschecker" "igetnonce"
-                do
-                        echo -e "Fetching $i..."
-                        git clone https://github.com/tihmstar/${i}.git
-                        cd ${i}
-                          echo -e "Installing $i..."
-git submodule init
-                        git submodule update
-                        ./autogen.sh
-                        make
-                        sudo make install
-                        
-                      
-                        cd ..
-                       
-                  
-                done
+
+echo "==> Checking for libirecovery..."
+	echo "==> Downloading libirecovery..."
+	git clone https://github.com/libimobiledevice/libirecovery.git
+
+	echo "==> Making libirecovery..."
+	cd libirecovery
+        git submodule init && git submodule update
+	./autogen.sh && make
+
+	echo
+	echo "==> Installing libirecovery. This might ask for your password..."
+	sudo make install
+	cd ..
+	rm -rf libirecovery
+fi
+
+echo "==> Checking for libfragmentzip..."
+	echo "==> Downloading libfragmentzip..."
+	git clone https://github.com/tihmstar/libfragmentzip.git
+        git clone https://github.com/tihmstar/libgeneral.git
+	echo "==> Making libfragmentzip..."
+cd libgeneral
+    git submodule init && git submodule update
+     
+	./autogen.sh && make
+
+	echo
+	echo "==> Installing libgeneral. This might ask for your password..."
+	sudo make install
+	cd ..
+	rm -rf libgeneral
+	cd libfragmentzip
+    git submodule init && git submodule update
+     
+	./autogen.sh && make
+
+	echo
+	echo "==> Installing libfragmentzip. This might ask for your password..."
+	sudo make install
+	cd ..
+	rm -rf libfragmentzip
 
 echo -e "==> Grabbing dependencies and installing!"
- git clone https://github.com/lzfse/lzfse.git  
-cd lfzse
-./autogen.sh
-make
-sudo make install
-cd ..   
 
+                git clone https://github.com/lzfse/lzfse.git
+				git clone https://github.com/s0uthwest/libimobiledevice.git
+				git clone https://github.com/s0uthwest/idevicerestore.git
 				git clone https://github.com/merculous/futurerestore.git
+				git clone https://github.com/s0uthwest/img4tool.git
+				git clone https://github.com/tihmstar/tsschecker.git
+                                git clone https://github.com/tihmstar/igetnonce.git
+
 
 				export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
+			       cd lzfse
+                              git submodule init 
+                            git submodule update
+                             
+				./autogen.sh
+				./configure
+				make 
+                                sudo make install
+				cd ..
+                            cd libimobiledevice
+                           git submodule init
+                          git submodule update
+                            
+				./autogen.sh
+				./configure
+				make 
+                              sudo make install
+				cd ..
+                                 cd idevicerestore
+                           git submodule init
+                          git submodule update
+                            
+				./autogen.sh
+				./configure
+				make 
+                              sudo make install
+				cd ..
                                cd futurerestore
                            git submodule init 
                            git submodule update
@@ -114,7 +148,37 @@ cd ..
 				./configure
 				make && sudo make install
 				cd .. 
-                            
+                               cd img4tool
+                          git submodule init 
+                       git submodule update
+                        
+				./autogen.sh
+				./configure
+				make           
+                                sudo make install
+				cd ..
+                                cd tsschecker
+                            git submodule init
+                        git submodule update
+                        cd external
+                        rmdir jssy
+                        git clone https://github.com/tihmstar/jssy.git
+                         cd ..
+				./autogen.sh
+				./configure
+				make
+                                sudo make install
+                               cd .. 
+                              cd igetnonce
+                           git submodule init
+                     git submodule update
+				./autogen.sh
+				./configure
+				make 
+                               sudo make install
+                            cd ..
+
+                            cd ..
 sudo pacman -S libcurl-compat
 pip install pyusb
 pip3 install pyusb
