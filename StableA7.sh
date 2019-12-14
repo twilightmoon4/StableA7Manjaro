@@ -18,7 +18,7 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 libimobiledevice \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
-				wget swig
+				wget swig python-pyusb
                 
 cd bin
 chmod +x *
