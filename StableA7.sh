@@ -27,7 +27,7 @@ cd ..
   cd build
 sudo ldconfig
                           
-                for i in "libplist" "libusbmuxd" "libimobiledevice" "usbmuxd" "libirecovery" "ideviceinstaller" "libideviceactivation" "idevicerestore" "ifuse"
+                for i in "libplist" "libusbmuxd" "usbmuxd" "libirecovery" "ideviceinstaller" "libideviceactivation" "ifuse"
                 do
                         echo -e "Fetching $i..."
                         git clone https://github.com/libimobiledevice/${i}.git
@@ -43,6 +43,21 @@ sudo ldconfig
                   
                 done 
 
+ for i in  "libimobiledevice" "idevicerestore"
+                do
+                        echo -e "Fetching $i..."
+                        git clone https://github.com/s0uthwest/${i}.git
+                        cd ${i}
+                          echo -e "Installing $i..."
+                        ./autogen.sh
+                        make
+                        sudo make install
+                        
+                      
+                        cd ..
+                       
+                  
+                done
                for i in  "libfragmentzip" "libgeneral" "img4tool" "tsschecker" "igetnonce"
                 do
                         echo -e "Fetching $i..."
@@ -60,7 +75,7 @@ sudo ldconfig
                 done
 
 echo -e "==> Grabbing dependencies and installing!"
- git clone https://github.com/lzfse/lfzse.git  
+ git clone https://github.com/lzfse/lzfse.git  
 cd lfzse
 ./autogen.sh
 make
