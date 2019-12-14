@@ -19,7 +19,8 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
 				wget swig python-pyusb
-                
+sudo ldconfig
+sudo updatedb                
 cd bin
 chmod +x *
 cd .. 	
@@ -183,6 +184,7 @@ sudo pacman -S libcurl-compat
 pip install pyusb
 pip3 install pyusb
 sudo ldconfig
+sudo updatedb
 fi
 clear
 echo "**************** StableA7Linux ****************"
