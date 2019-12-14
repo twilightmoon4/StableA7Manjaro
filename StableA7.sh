@@ -78,7 +78,7 @@ cd libgeneral
 	cd libfragmentzip
     git submodule init && git submodule update
      
-	./autogen.sh && make
+	./autogen.sh --prefix=/usr && make
 
 	echo
 	echo "==> Installing libfragmentzip. This might ask for your password..."
