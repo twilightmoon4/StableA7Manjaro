@@ -58,7 +58,7 @@ echo "==> Checking for libirecovery..."
 	sudo make install
 	cd ..
 	rm -rf libirecovery
-fi
+
 
 echo "==> Checking for libfragmentzip..."
 	echo "==> Downloading libfragmentzip..."
@@ -183,7 +183,6 @@ sudo pacman -S libcurl-compat
 pip install pyusb
 pip3 install pyusb
 sudo ldconfig
-fi
 fi
 clear
 echo "**************** StableA7Linux ****************"
