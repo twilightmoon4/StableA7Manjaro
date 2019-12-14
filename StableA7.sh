@@ -33,6 +33,8 @@ sudo ldconfig
                         git clone https://github.com/libimobiledevice/${i}.git
                         cd ${i}
                           echo -e "Installing $i..."
+                        git submodule init
+                        git submodule update
                         ./autogen.sh
                         make
                         sudo make install
@@ -49,6 +51,8 @@ sudo ldconfig
                         git clone https://github.com/s0uthwest/${i}.git
                         cd ${i}
                           echo -e "Installing $i..."
+git submodule init
+                        git submodule update
                         ./autogen.sh
                         make
                         sudo make install
@@ -64,6 +68,8 @@ sudo ldconfig
                         git clone https://github.com/tihmstar/${i}.git
                         cd ${i}
                           echo -e "Installing $i..."
+git submodule init
+                        git submodule update
                         ./autogen.sh
                         make
                         sudo make install
