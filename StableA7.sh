@@ -18,23 +18,19 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 libimobiledevice \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
-				wget libguestfs
+				wget
                 
 cd bin
 chmod +x *
 cd .. 			 
  mkdir build
   cd build
-
-         libs = ( " libusbmuxd-git "  " libimobiledevice-git "  " usbmuxd-git "  " libirecovery-git " \
-                " ideviceinstaller-git "  " libideviceactivation-git "  " idevicerestore-git "  " ifuse-git "  \
-				" lfzse-git " " libgeneral-git " " libfragmentzip-git " " img4tool-git " " tsschecker-git " " igetnonce-git ")
                  
-                for i in "${libs[@]}"
+                for i in "libusbmuxd-git" "libimobiledevice-git" "usbmuxd-git" "libirecovery-git" "ideviceinstaller-git" "libideviceactivation-git" "idevicerestore-git" "ifuse-git" "lfzse-git" "libgeneral-git" "libfragmentzip-git" "img4tool-git" "tsschecker-git" "igetnonce-git"
                 do
                         echo -e "Fetching $i..."
-                        git clone https://aur.archlinux.org/packages/${i}.git
-                        cd $i
+                        git clone https://aur.archlinux.org/${i}.git
+                        cd ${i}
                           echo -e "Installing $i..."
                         makepkg -i
                       
