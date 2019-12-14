@@ -184,6 +184,7 @@ pip install pyusb
 pip3 install pyusb
 sudo ldconfig
 fi
+fi
 clear
 echo "**************** StableA7Linux ****************"
 echo
