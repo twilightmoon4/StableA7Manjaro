@@ -19,8 +19,7 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
 				wget swig python-pyusb
-sudo ldconfig
-sudo updatedb                
+                
 cd bin
 chmod +x *
 cd .. 	
@@ -69,7 +68,7 @@ echo "==> Checking for libfragmentzip..."
 cd libgeneral
     git submodule init && git submodule update
      
-	./autogen.sh && make
+	./autogen.sh --prefix=/usr && make
 
 	echo
 	echo "==> Installing libgeneral. This might ask for your password..."
@@ -184,7 +183,6 @@ sudo pacman -S libcurl-compat
 pip install pyusb
 pip3 install pyusb
 sudo ldconfig
-sudo updatedb
 fi
 clear
 echo "**************** StableA7Linux ****************"
