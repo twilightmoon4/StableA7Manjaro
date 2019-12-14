@@ -18,28 +18,54 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 libimobiledevice \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
-				wget
+				wget swig
                 
 cd bin
 chmod +x *
 cd .. 			 
  mkdir build
   cd build
-                 
-                for i in "libusbmuxd-git" "libimobiledevice-git" "usbmuxd-git" "libirecovery-git" "ideviceinstaller-git" "libideviceactivation-git" "idevicerestore-git" "ifuse-git" "lfzse-git" "libgeneral-git" "libfragmentzip-git" "img4tool-git" "tsschecker-git" "igetnonce-git"
+sudo ldconfig
+                          
+                for i in "libplist" "libusbmuxd" "libimobiledevice" "usbmuxd" "libirecovery" "ideviceinstaller" "libideviceactivation" "idevicerestore" "ifuse"
                 do
                         echo -e "Fetching $i..."
-                        git clone https://aur.archlinux.org/${i}.git
+                        git clone https://github.com/libimobiledevice/${i}.git
                         cd ${i}
                           echo -e "Installing $i..."
-                        makepkg -i
+                        ./autogen.sh
+                        make
+                        sudo make install
+                        
                       
                         cd ..
+                       
                   
                 done 
 
-echo -e "==> Grabbing dependencies and installing!"
+               for i in  "libfragmentzip" "libgeneral" "img4tool" "tsschecker" "igetnonce"
+                do
+                        echo -e "Fetching $i..."
+                        git clone https://github.com/tihmstar/${i}.git
+                        cd ${i}
+                          echo -e "Installing $i..."
+                        ./autogen.sh
+                        make
+                        sudo make install
+                        
+                      
+                        cd ..
+                       
+                  
+                done
 
+echo -e "==> Grabbing dependencies and installing!"
+ git clone https://github.com/lzfse/lfzse.git  
+cd lfzse
+./autogen.sh
+make
+sudo make install
+cd ..   
 
 				git clone https://github.com/merculous/futurerestore.git
 
