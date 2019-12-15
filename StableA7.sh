@@ -18,7 +18,7 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 libimobiledevice \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
-				wget swig python-pyusb brige-utils
+				wget swig python-pyusb bridge-utils
                 
 cd bin
 chmod +x *
@@ -92,7 +92,7 @@ echo -e "==> Grabbing dependencies and installing!"
 				git clone https://github.com/s0uthwest/libimobiledevice.git
 				git clone https://github.com/s0uthwest/idevicerestore.git
 				git clone https://github.com/merculous/futurerestore.git
-				git clone https://github.com/s0uthwest/img4tool.git
+				git clone https://github.com/tihmstar/img4tool.git
 				git clone https://github.com/tihmstar/tsschecker.git
                                 git clone https://github.com/tihmstar/igetnonce.git
 
@@ -353,15 +353,14 @@ fi
        
 
 	echo "==> Sending patched iBSS/iBEC to device..."
+       systemctl enable libvirtd
+systemctl start libvirtd
          sudo ip tuntap add dev tap0 mode tap
          sudo ip link set tap0 up promisc on
 sudo brctl addbr virbr0
   sudo ip link set dev virbr0 up
          sudo ip link set dev tap0 master virbr0
-       systemctl enable libvirtd
-systemctl start libvirtd
          sudo virsh net-autostart default
-sudo virsh net-autostart default
 
 	./bin/irecovery -f ibss.patched.im4p
         
