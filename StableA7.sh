@@ -18,7 +18,7 @@ automake libtool openssl openssl-1.0 tar perl binutils gcc libconfig \
                 libimobiledevice \
                 zip unzip libgcrypt gnutls \
                 m4 bsdiff qemu virt-manager git \
-				wget swig python-pyusb
+				wget swig python-pyusb brige-utils
                 
 cd bin
 chmod +x *
@@ -334,15 +334,15 @@ mv ipwndfu_public ipwndfu
 			 echo -e "[+]The script will run ipwndfu again and again until the device is in PWNDFU mode"
 			
             read -p "[+]Please put your idevice in dfu mode and press enter"
-            ./ipwndfu -p &> /dev/null
-            ./ipwndfu -p &> /dev/null
+            sudo python2.7 ipwndfu -p &> /dev/null
+            sudo python2.7 ipwndfu -p &> /dev/null
             string=$(lsusb | grep -c "Apple, Inc. Mobile Device (DFU Mode)")
         done
         
         
         read -p "[+]Please unplug and plug in your idevice again and press enter"
-        ./ipwndfu -p &> /dev/null
-        python rmsigchks.py
+        sudo python2.7 ipwndfu -p &> /dev/null
+        sudo python2.7 rmsigchks.py
         cd ..
 if [ $string == 1 ]; then
         echo "We seem to be in pwned DFU mode!"
@@ -355,10 +355,14 @@ fi
 	echo "==> Sending patched iBSS/iBEC to device..."
          sudo ip tuntap add dev tap0 mode tap
          sudo ip link set tap0 up promisc on
-         sudo ip link set dev virbr0 up
-         sudo ip link set dev tap0 master virbr0	
+sudo brctl addbr virbr0
+  sudo ip link set dev virbr0 up
+         sudo ip link set dev tap0 master virbr0
+       systemctl enable libvirtd
+systemctl start libvirtd
          sudo virsh net-autostart default
-       
+sudo virsh net-autostart default
+
 	./bin/irecovery -f ibss.patched.im4p
         
 	./bin/irecovery -f ibec.patched.im4p
