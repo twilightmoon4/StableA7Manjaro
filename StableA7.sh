@@ -110,7 +110,7 @@ echo -e "==> Grabbing dependencies and installing!"
 				cd ..
                             cd libimobiledevice
                            git submodule init
-                          git submodule update
+                          
                             
 				./autogen.sh
 				./configure
