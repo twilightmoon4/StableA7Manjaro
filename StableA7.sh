@@ -110,7 +110,7 @@ echo -e "==> Grabbing dependencies and installing!"
 				cd ..
                             cd libimobiledevice
                            git submodule init
-                          
+                          git submodule update
                             
 				./autogen.sh
 				./configure
@@ -128,7 +128,7 @@ echo -e "==> Grabbing dependencies and installing!"
 				cd ..
                                cd futurerestore
                            git submodule init 
-                           git submodule update
+                           
                            cd external
                            rmdir idevicerestore
                            rmdir tsschecker
